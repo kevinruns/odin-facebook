@@ -1,0 +1,18 @@
+
+rails new odin-facebook --database=postgresql
+
+rails g scaffold Post post:text
+
+rails db:create
+rails db:migrate
+
+
+
+  gem 'better_errors', '~> 2.1', '>= 2.1.1'
+  gem 'guard', '~> 2.18'
+
+  gem 'bootstrap', '~> 5.1'
+
+  gem 'devise', '~> 4.8'
+
+  bundle install
