@@ -16,8 +16,13 @@ gem 'bootstrap', '~> 5.1'
 gem 'devise', '~> 4.8'
 
 bundle install
-
+rails generate devise:install
 
 rails g devise User
 
 rails db:migrate
+
+
+
+# in controller
+before_action :authenticate_user!, except: [:index, :show]
