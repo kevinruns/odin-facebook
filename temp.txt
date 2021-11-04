@@ -1,0 +1,3 @@
+config/locales/devise.en.yml:      signed_up: "Welcome! You have signed up successfully."
+node_modules/babel-plugin-macros/README.md:[![PRs Welcome][prs-badge]][prs]
+node_modules/cookie/README.md:    res.write('<p>Welcome back, <b>' + escapeHtml(name) + '</b>!</p>');

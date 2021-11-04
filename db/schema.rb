@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_21_132345) do
+ActiveRecord::Schema.define(version: 2021_11_03_213420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friends", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "requester_id", null: false
+    t.integer "status", default: 0
+    t.bigint "invited_id", null: false
+    t.index ["invited_id"], name: "index_friends_on_invited_id"
+    t.index ["requester_id"], name: "index_friends_on_requester_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.text "post"
@@ -29,8 +39,13 @@ ActiveRecord::Schema.define(version: 2021_10_21_132345) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "user_name"
+    t.string "first_name"
+    t.string "family_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "friends", "users", column: "invited_id"
+  add_foreign_key "friends", "users", column: "requester_id"
 end
