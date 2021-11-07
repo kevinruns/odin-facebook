@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_03_213420) do
+ActiveRecord::Schema.define(version: 2021_11_07_144607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_11_03_213420) do
     t.integer "status", default: 0
     t.bigint "invited_id", null: false
     t.index ["invited_id"], name: "index_friends_on_invited_id"
+    t.index ["requester_id", "invited_id", "status"], name: "index_friends_on_requester_id_and_invited_id_and_status", unique: true
     t.index ["requester_id"], name: "index_friends_on_requester_id"
   end
 

@@ -66,3 +66,6 @@ gem 'bootstrap', '~> 5.1'
 # devise
 gem 'devise', '~> 4.8'
 
+
+# debugging
+gem 'binding_of_caller', '~> 1.0'

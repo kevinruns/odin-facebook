@@ -20,4 +20,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
+  resources :friends, only: [:create, :destroy]
+
+
 end
