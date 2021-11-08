@@ -9,14 +9,19 @@
       <td> <%= user.full_name %> </td>
 
       <% if @friend_ids.include? user.id%>
-        <td> <%= button_to "Friend", {action: "create", invited_param: user  } , method: :post %> </td>
+        <td>Friend <%= link_to "Remove friend", friend_path(id: user.id) , method: :delete %> </td>
+
       <% elsif @requester_ids.include? user.id%>
-        <td> <%= button_to "Accept", {action: "create", invited_param: user  } , method: :post %> </td>
+        <td> <%= button_to "Accept", friend_path(id: user.id), method: :patch  %> </td>
+
       <% elsif @invited_ids.include? user.id%>
-        <td> <%= link_to "Invited", friend_path(id: user.id) , method: :delete %> </td>
+        <td>Pending <%= link_to "Click to withdraw", friend_path(id: user.id) , method: :delete %> </td>
+
       <% else %>
         <td> <%= button_to "Add Friend", {action: "create", invited_param: user  } , method: :post %> </td>
+
       <% end %>
+
     </tr>
 
   <% end %>

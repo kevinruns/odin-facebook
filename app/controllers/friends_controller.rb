@@ -2,6 +2,7 @@ class FriendsController < ApplicationController
 
   def index
 
+    # get list of friends
     friend_1_ids = Friend.accepted.where(invited_id: current_user).pluck(:requester_id)
     friend_2_ids = Friend.accepted.where(requester_id: current_user).pluck(:invited_id)
     @friend_ids = friend_1_ids + friend_2_ids
@@ -36,21 +37,33 @@ class FriendsController < ApplicationController
     end
   end
 
-  
   def destroy
     @friend = Friend.find_by(requester_id: current_user.id, invited_id: params[:id])
-    p "test 1"
-    p current_user.id
-    p params[:id]
 
-    p @friend.status
-    p "test 2"
+    if @friend.nil?
+      @friend = Friend.find_by(requester_id: params[:id], invited_id: current_user.id)
+    end
 
     @friend.destroy
-
     redirect_back(fallback_location: :index)
   end
 
 
+  def update
+
+    @friend = Friend.find_by(requester_id: params[:id], invited_id: current_user.id, status: 0)
+    if @friend.nil?
+      @friend = Friend.find_by(requester_id: current_user.id, invited_id: params[:id], status: 0)
+    end
+
+    @friend.status = 1
+
+    if @friend.save
+      redirect_back(fallback_location: :index)
+    else
+      render :index
+    end
+
+  end
 
 end
