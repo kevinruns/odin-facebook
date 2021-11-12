@@ -1,11 +1,12 @@
-<h3><%= current_user.full_name %>  friend page</h3>
+
+<div class="mb-4">
+  <h3><%= current_user.full_name %>  friend page</h3>
+</div>
+
 
 <table class="table">
-
   <% @users.each do |user| %>
-
     <tr>
-
       <td> <%= user.full_name %> </td>
 
       <% if @friend_ids.include? user.id%>
@@ -19,34 +20,7 @@
 
       <% else %>
         <td> <%= button_to "Add Friend", {action: "create", invited_param: user  } , method: :post %> </td>
-
       <% end %>
-
-    </tr>
-
-  <% end %>
-
-</table>
-
-
-<h3>Users who have requested friend link with current user</h3>
-
-<table class="table">
-  <% @requested_users.each do |user| %>
-    <tr>
-      <td> <%= user.full_name %> </td>
-    </tr>
-  <% end %>
-</table>
-
-
-
-<h3>Users who current user has invited to be friends</h3>
-
-<table class="table">
-  <% @invited_users.each do |user| %>
-    <tr>
-      <td> <%= user.full_name %> </td>
     </tr>
   <% end %>
 </table>
