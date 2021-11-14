@@ -13,4 +13,10 @@ class User < ApplicationRecord
   has_many :requests, class_name: "Friend", foreign_key: "requester_id"
   has_many :invites, class_name: "Friend", foreign_key: "invited_id"
 
+  has_many :posts, foreign_key: :author_id
+
+  def friend(poster)
+    Friend.friend_list(self).include?(poster.id)
+  end
+
 end

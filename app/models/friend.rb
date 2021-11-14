@@ -12,4 +12,10 @@ class Friend < ApplicationRecord
 
   validates :status, uniqueness: {scope: [:requester_id, :invited_id]}
 
+  def self.friend_list(user)
+    friend_1_ids = Friend.accepted.where(invited_id: user).pluck(:requester_id)
+    friend_2_ids = Friend.accepted.where(requester_id: user).pluck(:invited_id)
+    @friend_ids = friend_1_ids + friend_2_ids
+  end
+
 end

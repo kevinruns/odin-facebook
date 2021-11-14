@@ -1,6 +1,6 @@
 
 <div class="mb-4">
-  <h3><%= current_user.full_name %>  friend page</h3>
+  <h3><%= current_user.full_name %> aka <%= current_user.user_name %>  friend page</h3>
 </div>
 
 
@@ -8,6 +8,7 @@
   <% @users.each do |user| %>
     <tr>
       <td> <%= user.full_name %> </td>
+      <td> <%= user.user_name %> </td>
 
       <% if @friend_ids.include? user.id%>
         <td>Friend <%= link_to "Remove friend", friend_path(id: user.id) , method: :delete %> </td>
