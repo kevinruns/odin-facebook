@@ -6,10 +6,12 @@ class PostsController < ApplicationController
   def index
 
     @friend_posts = []
+    @friend_ids = current_user.friends 
+    @friend_ids << current_user.id 
 
     Post.all.each do | post | 
       poster = User.find_by(id: post.author_id)
-      if current_user.friend(poster)
+      if (@friend_ids.include?(poster.id))
         p "#{poster.user_name} friend"
         @friend_posts << post
       end

@@ -15,8 +15,8 @@ class User < ApplicationRecord
 
   has_many :posts, foreign_key: :author_id
 
-  def friend(poster)
-    Friend.friend_list(self).include?(poster.id)
+  def friends
+    Friend.friend_list(self)
   end
 
 end
