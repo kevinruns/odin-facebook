@@ -15,6 +15,10 @@ class User < ApplicationRecord
 
   has_many :posts, foreign_key: :author_id
 
+  has_many :likes, foreign_key: :liker_id
+  has_many :posts, through: :likes
+
+
   def friends
     Friend.friend_list(self)
   end

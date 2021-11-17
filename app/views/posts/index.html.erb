@@ -15,6 +15,11 @@
           <%= link_to 'Show', post %>
           <%= link_to 'Edit', edit_post_path(post) %>
           <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% else %>
+          <div> Likes <%= post.likes.all.count %> </div>
+          <% unless post.likes.find_by(liker: current_user) %>
+            <%= link_to 'Like', like_post_path(post) %>
+          <% end %>
         <% end %>
       </div>
 

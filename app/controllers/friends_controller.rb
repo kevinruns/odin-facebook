@@ -46,6 +46,7 @@ class FriendsController < ApplicationController
 
     @friend.destroy
     redirect_back(fallback_location: :index)
+    
   end
 
 

@@ -22,4 +22,7 @@ Rails.application.routes.draw do
 
   resources :friends, only: [:create, :destroy, :update]
 
+
+  get '/post/:id/like', to: 'posts#like', as: 'like_post'
+
 end
