@@ -21,6 +21,7 @@
           <% unless post.likes.find_by(liker: current_user) %>
             <%= link_to 'Like', like_post_path(post) %>
           <% end %>
+          <%= link_to 'Comment', new_post_comment_path(post) %>
         <% end %>
       </div>
 
@@ -32,4 +33,6 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<div class="mb-5">
+  <%= link_to 'New Post', new_post_path %>
+</div>

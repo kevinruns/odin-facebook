@@ -53,9 +53,6 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-
-#    @post = current_user.posts.build(post_params)
-
     @post = Post.new(post_params)
     @post.author_id = current_user.id
 

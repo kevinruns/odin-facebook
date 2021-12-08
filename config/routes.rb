@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+  get 'comments/create'
   get 'friends/index'
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -12,17 +12,16 @@ Rails.application.routes.draw do
     end
     
     authenticated do
-      resources :posts
+      resources :posts do
+        resources :comments
+      end
+      get '/post/:id/like', to: 'posts#like', as: 'like_post'
       root "posts#index", as: :authenticated_root
     end
     
   end
 
   resources :users, only: [:show]
-
   resources :friends, only: [:create, :destroy, :update]
-
-
-  get '/post/:id/like', to: 'posts#like', as: 'like_post'
 
 end
