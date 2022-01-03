@@ -1,0 +1,31 @@
+
+
+<div class="ms-5">
+
+  <div class="card my-3" style="width: 37rem;">
+
+    <div class="card-body">
+
+      <p class="card-text"><%= comment.body %></p>
+
+      <%#= render 'textbox_footer', post: comment %>
+
+      <div class="card-footer">
+      
+        <%#= User.find_by(id: comment.author_id).user_name %>
+        <% if current_user == User.find_by(id: comment.commenter_id) %>
+          <%#= link_to 'Show', comment %>
+          <%#= link_to 'Edit', edit_comment_path(comment) %>
+          <%#= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% else %>
+          <div> Likes <%#= comment.likes.all.count %> </div>
+          <%# unless comment.likes.find_by(liker: current_user) %>
+            <%#= link_to 'Like', like_comment_path(comment) %>
+          <%# end %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+</div>
