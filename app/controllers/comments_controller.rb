@@ -6,12 +6,30 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build
   end
 
-  def create
-    @comment = @post.comments.build(comment_params)
-    @comment.commenter_id = current_user.id
+
+  def like
+
+    @like = @post.likes.build(liker: current_user)
 
     respond_to do |format|
-      if @comment.save
+      if @like.save
+        format.html { redirect_back(fallback_location: :index) }
+        format.json { render :index, status: :created, location: @post }
+      else
+        format.html { render :index, status: :unprocessable_entity }
+        format.json { render json: @like.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
+
+  def create
+    @comment = @post.comments.build(comment_params)
+    @comment.author_id = current_user.id
+
+    respond_to do |format|
+      if @comment.save!
         format.html { redirect_to authenticated_root_path , notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: @comment }
       else

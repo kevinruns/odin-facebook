@@ -6,7 +6,7 @@
   <%= render 'post_box', post: post %>
 
   <% post.comments.each do |comment| %>
-    <%= render 'comment_box', comment: comment %>
+    <%= render 'comments/comment_box', comment: comment %>
   <% end %>
 
 <% end %>

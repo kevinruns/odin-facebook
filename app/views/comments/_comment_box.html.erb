@@ -8,15 +8,12 @@
 
       <p class="card-text"><%= comment.body %></p>
 
-      <%#= render 'textbox_footer', post: comment %>
-
       <div class="card-footer">
       
-        <%#= User.find_by(id: comment.author_id).user_name %>
-        <% if current_user == User.find_by(id: comment.commenter_id) %>
-          <%#= link_to 'Show', comment %>
-          <%#= link_to 'Edit', edit_comment_path(comment) %>
-          <%#= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= User.find_by(id: comment.author_id).user_name %>
+        <% if current_user == User.find_by(id: comment.author_id) %>
+          <%= link_to 'Edit', edit_post_comment_path(comment.post_id, comment) %>
+          <%= link_to 'Destroy', post_comment_path(comment.post_id, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
         <% else %>
           <div> Likes <%#= comment.likes.all.count %> </div>
           <%# unless comment.likes.find_by(liker: current_user) %>
@@ -26,6 +23,7 @@
       </div>
 
     </div>
+
   </div>
 
 </div>
