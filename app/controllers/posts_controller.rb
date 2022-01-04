@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def like
 
-    @like = @post.likes.build(liker: current_user)
+    @like = @post.like_posts.build(liker: current_user)
 
     respond_to do |format|
       if @like.save

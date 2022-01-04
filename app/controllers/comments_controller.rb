@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 
   def like
 
-    @like = @post.likes.build(liker: current_user)
+    @like = @post.likes.build(liker: current_user, type: "comment")
 
     respond_to do |format|
       if @like.save
