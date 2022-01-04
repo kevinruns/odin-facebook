@@ -17,6 +17,9 @@ Rails.application.routes.draw do
       end
       get '/post/:id/like', to: 'posts#like', as: 'like_post'
       root "posts#index", as: :authenticated_root
+
+      get '/post/:post_id/comments/:id/like', to: 'comments#like', as: 'like_comment'
+
     end
     
   end

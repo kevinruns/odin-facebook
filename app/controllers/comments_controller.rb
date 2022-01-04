@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :get_post
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy, :like]
 
   def new
     @comment = @post.comments.build
@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 
   def like
 
-    @like = @post.likes.build(liker: current_user, type: "comment")
+    @like = @comment.like_comments.build(liker: current_user)
 
     respond_to do |format|
       if @like.save
