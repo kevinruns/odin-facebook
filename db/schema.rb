@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_03_221641) do
+ActiveRecord::Schema.define(version: 2022_01_04_152041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2022_01_03_221641) do
     t.bigint "likedtext_id", null: false
     t.bigint "liker_id", null: false
     t.string "type"
-    t.index ["likedtext_id"], name: "index_likes_on_likedtext_id"
+    t.string "likedtext_id_type"
     t.index ["liker_id"], name: "index_likes_on_liker_id"
   end
 
@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2022_01_03_221641) do
   add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "friends", "users", column: "invited_id"
   add_foreign_key "friends", "users", column: "requester_id"
-  add_foreign_key "likes", "posts", column: "likedtext_id"
   add_foreign_key "likes", "users", column: "liker_id"
   add_foreign_key "posts", "users", column: "author_id"
 end

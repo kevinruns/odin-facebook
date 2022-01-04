@@ -1,9 +1,9 @@
-class RemoveLikeForeignKeys < ActiveRecord::Migration[6.1]
+class RemoveLikedTextRef < ActiveRecord::Migration[6.1]
   def change
-    remove_reference :likes, :likedtext_id, index: true, foreign_key: true
 
-    add_reference :post_likes, :likedtext_id, index: true, foreign_key: true
-    add_reference :comment_likes, :likedtext_id, index: true, foreign_key: true
+    remove_reference :likes, :liked_text_id foreign_key: true
+
+    remove_index :likes, name: "index_likes_on_likedtext_id"
 
   end
 end
