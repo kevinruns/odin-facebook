@@ -6,18 +6,43 @@
       <p class="card-text"><%= post.post %></p>
 
       <div class="card-footer">
-        <%= User.find_by(id: post.author_id).user_name %>
-        <% if current_user == User.find_by(id: post.author_id) %>
-          <%= link_to 'Show', post %>
-          <%= link_to 'Edit', edit_post_path(post) %>
-          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% else %>
-          <div> Likes <%= post.like_posts.all.count %> </div>
-          <% unless post.like_posts.find_by(liker: current_user) %>
-            <%= link_to 'Like', like_post_path(post) %>
-          <% end %>
-          <%= link_to 'Comment', new_post_comment_path(post) %>
-        <% end %>
+
+        <div class="d-flex justify-content-between">
+
+          <div>  
+            <%= User.find_by(id: post.author_id).user_name %> &nbsp;
+            <%= post.created_at.strftime("%Y-%m-%d %H:%M") %>
+          </div>
+
+          <div>
+
+            <% if current_user == User.find_by(id: post.author_id) %>
+
+              <%= link_to 'Edit', edit_post_path(post) %> &nbsp;
+              <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %> 
+
+            <% else %>
+
+              <div>  
+
+                <% unless post.like_posts.find_by(liker: current_user) %>
+                  <%= link_to 'Likes', like_post_path(post) %>
+                <% else %>
+                  <span> Likes </span>
+                <% end %>
+
+                <%= post.like_posts.all.count %> &nbsp;
+
+                <%= link_to 'Comment', new_post_comment_path(post) %>
+
+              </div>
+
+            <% end %>
+
+          </div>
+
+        </div>
+
       </div>
 
     </div>

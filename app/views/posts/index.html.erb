@@ -1,13 +1,18 @@
 
-<h1>Posts</h1>
+<h2>Post timeline</h2>
 
 <% @friend_posts.each do |post| %>
 
+
   <%= render 'post_box', post: post %>
 
-  <% post.comments.each do |comment| %>
-    <%= render 'comments/comment_box', comment: comment %>
-  <% end %>
+  <div class="ms-5">
+
+    <% post.comments.each do |comment| %>
+      <%= render 'comments/comment_box', comment: comment %>
+    <% end %>
+
+  </div>
 
 <% end %>
  

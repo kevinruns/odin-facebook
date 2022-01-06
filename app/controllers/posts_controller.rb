@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @friend_ids = current_user.friends 
     @friend_ids << current_user.id 
 
-    Post.all.each do | post | 
+    Post.all.order('created_at DESC').each do | post | 
       poster = User.find_by(id: post.author_id)
       if (@friend_ids.include?(poster.id))
         p "#{poster.user_name} friend"
