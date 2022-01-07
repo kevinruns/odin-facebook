@@ -27,4 +27,6 @@ class User < ApplicationRecord
     Friend.friend_list(self)
   end
 
+  has_many :notifications, foreign_key: :recipient_id
+  
 end

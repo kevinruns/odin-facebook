@@ -18,4 +18,18 @@ class Friend < ApplicationRecord
     @friend_ids = friend_1_ids + friend_2_ids
   end
 
+  private
+
+  def recipients
+    Friend.where(id: invited)
+  end
+
+  def create_notifications
+    recipients.each do |recipient|
+      Notification.create(recipient: recipient, actor: self.user,
+        action: 'requested_friend', notifiable: self)
+    end
+  end
+
+
 end

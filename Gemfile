@@ -69,3 +69,9 @@ gem 'devise', '~> 4.8'
 
 # debugging
 gem 'binding_of_caller', '~> 1.0'
+
+# gravatar
+gem "gravatar_image_tag", "~> 1.2"
+
+# image processing
+gem 'image_processing', '~> 1.2'
