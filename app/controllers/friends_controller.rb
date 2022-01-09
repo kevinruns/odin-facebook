@@ -30,6 +30,9 @@ class FriendsController < ApplicationController
     #   @user_names = User.pluck(:family_name)
     @friend = Friend.new(requester: current_user, invited_id: params[:invited_param], status: 0)
 
+    recipient = User.find_by(id: params[:invited_param])
+    Notification.create(recipient: recipient, actor: current_user, action: 'requested_friend', notifiable: @friend)
+
     if @friend.save
       redirect_back(fallback_location: :index)
     else

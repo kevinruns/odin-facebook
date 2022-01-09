@@ -1,4 +1,5 @@
 class Friend < ApplicationRecord
+
   belongs_to :requester, class_name: "User"
   belongs_to :invited, class_name: "User"
 
@@ -17,19 +18,5 @@ class Friend < ApplicationRecord
     friend_2_ids = Friend.accepted.where(requester_id: user).pluck(:invited_id)
     @friend_ids = friend_1_ids + friend_2_ids
   end
-
-  private
-
-  def recipients
-    Friend.where(id: invited)
-  end
-
-  def create_notifications
-    recipients.each do |recipient|
-      Notification.create(recipient: recipient, actor: self.user,
-        action: 'requested_friend', notifiable: self)
-    end
-  end
-
 
 end

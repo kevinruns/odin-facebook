@@ -25,8 +25,12 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show]
-  resources :friends, only: [:create, :destroy, :update]
+  resources :friends, only: [:create, :destroy, :update, :show]
 
-  resources :notifications, only: [:index]
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
 
 end
