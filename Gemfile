@@ -75,3 +75,9 @@ gem "gravatar_image_tag", "~> 1.2"
 
 # image processing
 gem 'image_processing', '~> 1.2'
+
+
+# OmniAuth
+gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection'
+gem 'activerecord-session_store', '~> 1.0'
