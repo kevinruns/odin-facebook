@@ -5,8 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook]
 
+  before_validation :set_username
 
-  validates :user_name, :first_name, :family_name, presence: true
+
+  validates :email, presence: true
     
   def full_name
     "#{first_name} #{family_name}"
@@ -37,5 +39,12 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
     end
   end
+
+  private
+
+    def set_username
+      self.user_name = self.email.split(/@/).first
+    end
+
 
 end
