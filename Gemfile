@@ -81,3 +81,6 @@ gem 'image_processing', '~> 1.2'
 gem 'omniauth-facebook'
 gem 'omniauth-rails_csrf_protection'
 gem 'activerecord-session_store', '~> 1.0'
+
+# letter opener
+gem "letter_opener", group: :development

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'comments/create'
   get 'friends/index'
-  devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
+  devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}, controllers: {registrations: 'registrations'}
   
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -33,5 +33,7 @@ Rails.application.routes.draw do
       post :mark_as_read
     end
   end
+
+
 
 end
