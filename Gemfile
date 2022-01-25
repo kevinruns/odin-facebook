@@ -84,3 +84,4 @@ gem 'activerecord-session_store', '~> 1.0'
 
 # letter opener
 gem "letter_opener", group: :development
+

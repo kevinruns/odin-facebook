@@ -273,8 +273,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :facebook_client_id),
-  Rails.application.credentials.dig(:facebook, :facebook_client_secret)
+  config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :facebook_client_id), Rails.application.credentials.dig(:facebook, :facebook_client_secret), token_params: { parse: :json }
+    
 
 #  config.omniauth :facebook, "APP_ID", "APP_SECRET", token_params: { parse: :json }
 

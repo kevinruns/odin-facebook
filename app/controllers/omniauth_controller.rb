@@ -1,4 +1,7 @@
 class OmniauthController < Devise::OmniauthCallbacksController
+
+#  skip_before_action :verify_authenticity_token, only: :facebook
+
   def facebook
 
     @user = User.create_from_provider_data(request.env['omniauth.auth'])

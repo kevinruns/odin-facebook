@@ -2,8 +2,10 @@ Rails.application.routes.draw do
 
   get 'comments/create'
   get 'friends/index'
-  devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}, controllers: {registrations: 'registrations'}
+
+  devise_for :users, controllers: {omniauth_callbacks: 'omniauth', registrations: 'registrations'}
   
+
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   devise_scope :user do
