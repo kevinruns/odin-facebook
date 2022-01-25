@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :likes, foreign_key: :liker_id, dependent: :destroy
   has_many :posts, through: :likes
 
-  has_many :comments, foreign_key: :commenter_id, dependent: :destroy
+  has_many :comments, foreign_key: :author_id, dependent: :destroy
   has_many :posts, through: :comments
 
   has_one_attached :avatar
