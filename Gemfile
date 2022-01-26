@@ -64,7 +64,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 5.1'
 
 # devise
-gem 'devise', '~> 4.8'
+gem 'devise', '~> 4.2'
+
 
 
 # debugging
