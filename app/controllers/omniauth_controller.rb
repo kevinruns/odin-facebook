@@ -1,6 +1,6 @@
 class OmniauthController < Devise::OmniauthCallbacksController
 
-#  skip_before_action :verify_authenticity_token, only: :facebook
+  skip_before_action :verify_authenticity_token, only: :facebook
 
   def facebook
 
