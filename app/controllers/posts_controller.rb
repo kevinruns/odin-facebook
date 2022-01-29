@@ -53,13 +53,13 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
-    @post.author_id = current_user.id
+    post = Post.new(post_params)
+    post.author_id = current_user.id
 
     respond_to do |format|
-      if @post.save
+      if post.save
         format.html { redirect_to authenticated_root_path , notice: "Post was successfully created." }
-        format.json { render :show, status: :created, location: @post }
+        format.json { render :show, status: :created, location: post }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -97,6 +97,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:post)
+      params.require(:post).permit(:body, :image)
     end
 end

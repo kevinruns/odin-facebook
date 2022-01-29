@@ -10,4 +10,6 @@ class Post < ApplicationRecord
 
   accepts_nested_attributes_for :comments
 
+  has_one_attached :image, dependent: :destroy
+
 end

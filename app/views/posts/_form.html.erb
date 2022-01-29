@@ -12,8 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.text_area :post, :rows=>5, :cols=>60 %>
+    <%= form.text_area :body, :rows=>5, :cols=>60 %>
   </div>
+
+  <br>
+
+  <div class="field">
+    <%= form.file_field :image %>
+  </div>
+
+  <br>
 
   <div class="actions">
     <%= form.submit %>
